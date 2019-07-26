@@ -1,6 +1,7 @@
 import React from "react";
 import App, { Container } from "next/app";
 import "normalize.css";
+import "./global.css";
 
 class MyApp extends App {
   // Only uncomment this method if you have blocking data requirements for
