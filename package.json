@@ -1,0 +1,29 @@
+{
+  "name": "simple-poll",
+  "version": "1.0.0",
+  "description": "simple polling app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theskillwithin/simple-poll.git"
+  },
+  "author": "Austin Peterson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theskillwithin/simple-poll/issues"
+  },
+  "homepage": "https://github.com/theskillwithin/simple-poll#readme",
+  "dependencies": {
+    "next": "^9.0.2",
+    "normalize.css": "^8.0.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "@zeit/next-css": "^1.0.1"
+  }
+}
