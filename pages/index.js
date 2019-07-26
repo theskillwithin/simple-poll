@@ -21,7 +21,19 @@ const Home = ({ test }) => {
       <section>
         <p>Coming soon...</p>
       </section>
-      <footer className={css.footer}>created by Austin Peterson</footer>
+      <footer className={css.footer}>
+        <p>
+          {" "}
+          <a
+            href="https://marketplace.visualstudio.com/vscode"
+            target="__blank"
+            rel="nofollow noopener noreferrer"
+          >
+            https://github.com/theskillwithin/simple-poll
+          </a>
+        </p>
+        <p>created by Austin Peterson</p>
+      </footer>
     </main>
   );
 };
