@@ -2,9 +2,26 @@ const { createServer } = require("http");
 const { parse } = require("url");
 const next = require("next");
 
+const express = require("express");
+const graphqlHTTP = require("express-graphql");
+const schema = require("./schema/schema");
+
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
+
+const graphqlApp = express();
+
+graphqlApp.use(
+  "/graphql",
+  graphqlHTTP({
+    schema
+  })
+);
+graphqlApp.listen(3001, err => {
+  if (err) throw err;
+  console.log("> Ready on http://localhost:3000");
+});
 
 app.prepare().then(() => {
   createServer((req, res) => {
