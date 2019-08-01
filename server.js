@@ -4,6 +4,7 @@ const next = require("next");
 
 const express = require("express");
 const graphqlHTTP = require("express-graphql");
+const mongoose = require("mongoose");
 const schema = require("./schema/schema");
 
 const dev = process.env.NODE_ENV !== "production";
@@ -11,6 +12,16 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const graphqlApp = express();
+
+const mongoURL = `mongodb+srv://${process.env.DB_USER}:${
+  process.env.DB_PASSWORD
+}@cluster0-3xwgx.mongodb.net/test?retryWrites=true&w=majority`;
+
+console.log(mongoURL);
+mongoose.connect(mongoURL);
+mongoose.connection.once("open", () => {
+  console.log("connected to database");
+});
 
 graphqlApp.use(
   "/graphql",
