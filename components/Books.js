@@ -5,6 +5,7 @@ const getBooksQuery = gql`
   {
     books {
       name
+      genre
       id
     }
   }
@@ -14,20 +15,23 @@ const getAuthorsQuery = gql`
   {
     authors {
       name
-      genre
+      age
+      id
     }
   }
 `;
 
-const List = props => {
-  console.log({ props });
+const List = ({ data }) => {
+  if (data.loading) return <div>Loading</div>;
   return (
     <div>
       <ul id="book-list">
-        <li>list</li>
+        {data.authors.map(author => (
+          <li key={author.id}>{author.name}</li>
+        ))}
       </ul>
     </div>
   );
 };
 
-export default graphql(getBooksQuery)(List);
+export default graphql(getAuthorsQuery)(List);
