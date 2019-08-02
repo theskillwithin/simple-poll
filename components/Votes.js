@@ -1,21 +1,11 @@
 import { gql } from "apollo-boost";
 import { graphql } from "react-apollo";
 
-const getBooksQuery = gql`
+const getItemsQuery = gql`
   {
-    books {
+    items {
       name
-      genre
-      id
-    }
-  }
-`;
-
-const getAuthorsQuery = gql`
-  {
-    authors {
-      name
-      age
+      votes
       id
     }
   }
@@ -26,12 +16,14 @@ const List = ({ data }) => {
   return (
     <div>
       <ul id="book-list">
-        {data.authors.map(author => (
-          <li key={author.id}>{author.name}</li>
+        {data.items.map(item => (
+          <li key={item.id}>
+            {item.name} - {item.votes}
+          </li>
         ))}
       </ul>
     </div>
   );
 };
 
-export default graphql(getAuthorsQuery)(List);
+export default graphql(getItemsQuery)(List);

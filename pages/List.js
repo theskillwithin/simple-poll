@@ -1,9 +1,8 @@
-import fetch from "isomorphic-unfetch";
 import ApolloClient from "apollo-client";
 import { ApolloProvider } from "react-apollo";
 import { createHttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import Books from "../components/Books";
+import Votes from "../components/Votes";
 
 const List = () => {
   const client = new ApolloClient({
@@ -17,7 +16,7 @@ const List = () => {
   });
   return (
     <ApolloProvider client={client}>
-      <Books />
+      <Votes />
     </ApolloProvider>
   );
 };
