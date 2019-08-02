@@ -23,7 +23,6 @@ const Home = ({ test }) => {
       </section>
       <footer className={css.footer}>
         <p>
-          {" "}
           <a
             href="https://marketplace.visualstudio.com/vscode"
             target="__blank"
