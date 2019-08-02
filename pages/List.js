@@ -1,8 +1,8 @@
 import fetch from "isomorphic-unfetch";
-import ApolloClient from "apollo-boost";
+import ApolloClient from "apollo-client";
 import { ApolloProvider } from "react-apollo";
 import { createHttpLink } from "apollo-link-http";
-// import { InMemoryCache } from "apollo-cache-inmemory";
+import { InMemoryCache } from "apollo-cache-inmemory";
 import Books from "../components/Books";
 
 const List = () => {
@@ -12,8 +12,8 @@ const List = () => {
     // API server, so we need to ensure it isn't firewalled, etc
     link: createHttpLink({
       uri: "http://localhost:3000/graphql"
-    })
-    // cache: new InMemoryCache()
+    }),
+    cache: new InMemoryCache()
   });
   return (
     <ApolloProvider client={client}>
