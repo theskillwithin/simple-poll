@@ -18,7 +18,7 @@ const mongoURL = `mongodb+srv://${process.env.DB_USER}:${
 }@cluster0-3xwgx.mongodb.net/test?retryWrites=true&w=majority`;
 
 console.log(mongoURL);
-mongoose.connect(mongoURL);
+mongoose.connect(mongoURL, { useFindAndModify: false, useNewUrlParser: true });
 mongoose.connection.once("open", () => {
   console.log("connected to database");
 });
