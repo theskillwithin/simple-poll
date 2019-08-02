@@ -1,3 +1,4 @@
+import fetch from "isomorphic-unfetch";
 import ApolloClient from "apollo-client";
 import { ApolloProvider } from "react-apollo";
 import { createHttpLink } from "apollo-link-http";

@@ -65,7 +65,7 @@ const Mutation = new GraphQLObjectType({
         return Item.findOneAndUpdate(
           { _id: args.id },
           { $inc: { votes: 1 } },
-          { returnNewDocument: true }
+          { returnNewDocument: true, new: true }
         );
       }
     }
