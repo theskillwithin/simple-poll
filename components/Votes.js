@@ -1,5 +1,6 @@
 import { gql } from "apollo-boost";
-import { graphql } from "react-apollo";
+import { object, func } from "prop-types";
+import { graphql, compose } from "react-apollo";
 
 const getItemsQuery = gql`
   {
@@ -11,14 +12,40 @@ const getItemsQuery = gql`
   }
 `;
 
-const List = ({ data }) => {
-  if (data.loading) return <div>Loading</div>;
+const upvoteItemMutation = gql`
+  mutation($id: ID!) {
+    upvoteItem(id: $id) {
+      name
+      votes
+      id
+    }
+  }
+`;
+
+const propTypes = {
+  getItemsQuery: object.isRequired,
+  upvoteItemMutation: func.isRequired
+};
+
+const List = ({ getItemsQuery, upvoteItemMutation }) => {
+  const upvote = id => {
+    upvoteItemMutation({
+      variables: {
+        id
+      }
+    });
+  };
+
+  if (getItemsQuery.loading) return <div>Loading</div>;
   return (
     <div>
       <ul id="book-list">
-        {data.items.map(item => (
+        {getItemsQuery.items.map(item => (
           <li key={item.id}>
-            {item.name} - {item.votes}
+            {item.name} - {item.votes} -{" "}
+            <button onClick={() => upvote(item.id)} type="button">
+              {upvoteItemMutation.loading ? "loading..." : "upvote"}
+            </button>
           </li>
         ))}
       </ul>
@@ -26,4 +53,9 @@ const List = ({ data }) => {
   );
 };
 
-export default graphql(getItemsQuery)(List);
+List.propTypes = propTypes;
+
+export default compose(
+  graphql(getItemsQuery, { name: "getItemsQuery" }),
+  graphql(upvoteItemMutation, { name: "upvoteItemMutation" })
+)(List);
