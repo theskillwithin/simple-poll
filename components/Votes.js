@@ -1,26 +1,6 @@
-import { gql } from "apollo-boost";
 import { object, func } from "prop-types";
 import { graphql, compose } from "react-apollo";
-
-const getItemsQuery = gql`
-  {
-    items {
-      name
-      votes
-      id
-    }
-  }
-`;
-
-const upvoteItemMutation = gql`
-  mutation($id: ID!) {
-    upvoteItem(id: $id) {
-      name
-      votes
-      id
-    }
-  }
-`;
+import { getItemsQuery, upvoteItemMutation } from "../queries/vote";
 
 const propTypes = {
   getItemsQuery: object.isRequired,
