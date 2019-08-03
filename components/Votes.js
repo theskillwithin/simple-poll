@@ -24,7 +24,7 @@ const List = ({ getItemsQuery, upvoteItemMutation }) => {
           <li key={item.id}>
             {item.name} - {item.votes} -{" "}
             <button onClick={() => upvote(item.id)} type="button">
-              {upvoteItemMutation.loading ? "loading..." : "upvote"}
+              upvote
             </button>
           </li>
         ))}
