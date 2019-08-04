@@ -15,6 +15,7 @@ const propTypes = {
 
 const List = ({ getItemsQuery, upvoteItemMutation, addItemMutation }) => {
   const [itemInput, updateItemInput] = useState("");
+
   const addItem = () => {
     const name = itemInput;
     addItemMutation({
@@ -28,6 +29,7 @@ const List = ({ getItemsQuery, upvoteItemMutation, addItemMutation }) => {
       .catch(err => console.log(err.message));
     updateItemInput("");
   };
+
   const upvote = id => {
     upvoteItemMutation({
       variables: {
