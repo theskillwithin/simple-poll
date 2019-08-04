@@ -50,7 +50,7 @@ const List = ({ getItemsQuery, upvoteItemMutation, addItemMutation }) => {
         />
         <button onClick={addItem}>Add</button>
       </div>
-      <ul id="book-list">
+      <ul className="list">
         {getItemsQuery.items.map(item => (
           <li key={item.id}>
             {item.name} - {item.votes} -{" "}
