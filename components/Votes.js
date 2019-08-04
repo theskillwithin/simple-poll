@@ -22,7 +22,10 @@ const List = ({ getItemsQuery, upvoteItemMutation, addItemMutation }) => {
         name
       }
     })
-      .then(res => console.log({ res }))
+      .then(res => {
+        getItemsQuery.refetch();
+        console.log({ res });
+      })
       .catch(err => console.log(err.message));
     updateItemInput("");
   };
@@ -37,6 +40,8 @@ const List = ({ getItemsQuery, upvoteItemMutation, addItemMutation }) => {
   };
 
   if (getItemsQuery.loading) return <div>Loading</div>;
+  console.log(getItemsQuery);
+
   return (
     <div>
       <div>
