@@ -45,13 +45,13 @@ const Mutation = new GraphQLObjectType({
     addItem: {
       type: ItemType,
       args: {
-        name: { type: new GraphQLNonNull(GraphQLString) },
-        votes: { type: new GraphQLNonNull(GraphQLInt) }
+        name: { type: new GraphQLNonNull(GraphQLString) }
+        // votes: { type: new GraphQLNonNull(GraphQLInt) }
       },
       resolve(parent, args) {
         let item = new Item({
           name: args.name,
-          votes: args.votes
+          votes: 1
         });
         return item.save();
       }
