@@ -24,7 +24,6 @@ const List = ({ getItemsQuery, upvoteItemMutation, addItemMutation }) => {
     })
       .then(res => {
         getItemsQuery.refetch();
-        console.log({ res });
       })
       .catch(err => console.log(err.message));
     updateItemInput("");
@@ -34,13 +33,10 @@ const List = ({ getItemsQuery, upvoteItemMutation, addItemMutation }) => {
       variables: {
         id
       }
-    })
-      .then(res => console.log({ res }))
-      .catch(err => console.log(err.message));
+    }).catch(err => console.log(err.message));
   };
 
   if (getItemsQuery.loading) return <div>Loading</div>;
-  console.log(getItemsQuery);
 
   return (
     <div>
