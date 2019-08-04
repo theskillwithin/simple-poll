@@ -21,7 +21,9 @@ const List = ({ getItemsQuery, upvoteItemMutation, addItemMutation }) => {
       variables: {
         name
       }
-    });
+    })
+      .then(res => console.log({ res }))
+      .catch(err => console.log(err.message));
     updateItemInput("");
   };
   const upvote = id => {
@@ -29,7 +31,9 @@ const List = ({ getItemsQuery, upvoteItemMutation, addItemMutation }) => {
       variables: {
         id
       }
-    });
+    })
+      .then(res => console.log({ res }))
+      .catch(err => console.log(err.message));
   };
 
   if (getItemsQuery.loading) return <div>Loading</div>;
